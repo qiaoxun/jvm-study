@@ -17,7 +17,9 @@ public class StaticListTest {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Debug Point 1");
-        new StaticListTest().populateList();
+        new Thread(() -> {
+            new StaticListTest().populateList();
+        }).start();
         System.out.println("Debug Point 3");
         while (true) {
             try {

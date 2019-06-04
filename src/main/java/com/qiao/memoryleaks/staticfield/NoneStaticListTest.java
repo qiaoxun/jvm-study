@@ -1,6 +1,8 @@
 package com.qiao.memoryleaks.staticfield;
 
 import java.io.IOException;
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,17 @@ public class NoneStaticListTest {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Debug Point 1");
-        new NoneStaticListTest().populateList();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NoneStaticListTest noneStaticListTest = new NoneStaticListTest();
+                noneStaticListTest.populateList();
+            }
+        });
+
+        thread.start();
+
         System.out.println("Debug Point 3");
         while (true) {
             try {
