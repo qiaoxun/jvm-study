@@ -43,9 +43,9 @@ public class ThreadLocalMemoryLeak {
             List<String> list = threadLocalMemoryLeak.getValueFromThreadLocal();
             System.out.println(list.get(0));
             System.out.println(Thread.currentThread().getName());
-            threadLocalMemoryLeak.removeValueFromThreadLocal();
+//            threadLocalMemoryLeak.removeValueFromThreadLocal();
 //            threadLocalMemoryLeak.setValueNull();
-            list = null;
+//            list = null;
 
             while (true) {
                 try {
